@@ -1,5 +1,5 @@
 <template>
-  <div class="login login-body">
+  <div class="login-body s-flex-center">
     <login-form></login-form>
   </div>
 </template>
@@ -18,12 +18,6 @@ export default {
 </script>
 
 <style scoped>
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .login-body {
   height: 100%;
   border-radius: 4px;

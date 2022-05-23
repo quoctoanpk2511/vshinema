@@ -1,6 +1,8 @@
 <template>
   <div class="layoutAuth">
-    <img class="logo" src="../statics/images/shinema-logo.png" />
+    <a href="/">
+      <img class="logo" src="../statics/images/shinema-logo.png"
+    /></a>
     <slot />
     <Footer />
   </div>
