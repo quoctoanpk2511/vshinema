@@ -1,18 +1,17 @@
 <template>
-  <form class="login-form" @submit.prevent="login">
+  <form class="login-form" @submit.prevent="handleSubmit">
     <div class="login-text">Login</div>
-    <input
-      v-model="email"
-      type="email"
-      class="form-control form-input"
-      autocomplete="on"
-      placeholder="Email address"
-      @change="validEmail(email)"
-    />
-    <div v-show="isInvalid" id="emailHelp" class="form-text text-danger">
-      Invalid email.
+    <div v-show="isInvalidUser" class="form-text text-danger">
+      {{ errorMessage }}
     </div>
     <input
+      v-model="username"
+      class="form-control form-input"
+      autocomplete="on"
+      placeholder="Username"
+    />
+    <input
+      v-model="password"
       type="password"
       class="form-control form-input"
       placeholder="Password"
@@ -34,25 +33,35 @@
 </template>
 
 <script>
+import { userService } from "../services";
+
 export default {
   name: "Home",
   data() {
     return {
-      isInvalid: false,
+      username: "",
+      password: "",
+      errorMessage: "",
+      isInvalidUser: false,
     };
   },
+  created() {},
   methods: {
-    login() {
-      // call api login
-      console.log("test");
-    },
-    validEmail(email) {
-      console.log(email);
-      if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-        this.isInvalid = true;
-      } else {
-        this.isInvalid = false;
-      }
+    handleSubmit() {
+      userService
+        .login(this.username, this.password)
+        .then((result) => {
+          console.log('result: ', result);
+          if (result.success) {
+            this.$router.push("/");
+          } else {
+            this.isInvalidUser = true;
+            this.errorMessage = result.errorMessage;
+          }
+        })
+        .catch((error) => {
+          console.log("Error: " + error);
+        });
     },
   },
 };

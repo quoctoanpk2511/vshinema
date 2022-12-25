@@ -11,6 +11,10 @@ const routes = [
     component: Home,
   },
   {
+    path: '/home',
+    redirect: '/',
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
@@ -35,6 +39,18 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.path == "/register") {
+    next();
+  }else if ((!localStorage.getItem("expires_at") || Date.now() > Date.parse(localStorage.getItem("expires_at"))) && to.path !== "/login" || to.path == "/logout") {
+    console.log('abccc');
+    localStorage.removeItem("request_token");
+    localStorage.removeItem("expires_at");
+    localStorage.removeItem("session_id");
+    next("/login");
+  } else next()
 });
 
 export default router;
