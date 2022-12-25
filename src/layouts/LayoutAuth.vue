@@ -1,5 +1,5 @@
 <template>
-  <div class="layoutAuth">
+  <div class="layout-auth">
     <a href="/">
       <img class="logo" src="../statics/images/shinema-logo.png"
     /></a>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-.layoutAuth {
+.layout-auth {
   height: 100vh;
   background-image: url("@/statics/images/layoutauth-bg.jpg");
   background-position: center;

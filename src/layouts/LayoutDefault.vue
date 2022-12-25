@@ -1,7 +1,9 @@
 <template>
-  <div class="layoutDefault">
-    <navbar></navbar>
-    <slot />
+  <div class="layout-default">
+    <Navbar />
+    <div class="default-container">
+      <slot />
+    </div>
     <Footer />
   </div>
 </template>
@@ -15,3 +17,9 @@ export default {
   components: { Navbar, Footer },
 };
 </script>
+
+<style scoped>
+.default-container {
+  height: calc(100vh - 56px - 400px);
+}
+</style>

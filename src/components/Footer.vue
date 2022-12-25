@@ -3,8 +3,6 @@
     <footer class="text-center text-white footer">
       <div class="container pt-4">
         <section class="mb-4">
-          <font-awesome-icon icon="fa-brands fa-facebook" />
-
           <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
             href="#!"
