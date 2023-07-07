@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div class="page-content home-page">
+    <div class="top-content"></div>
   </div>
 </template>
 
@@ -14,3 +14,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.top-content {
+  background-image: url("@/statics/images/home-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 390px;
+}
+</style>

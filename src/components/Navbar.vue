@@ -52,7 +52,7 @@
             <template #button-content>
               <b-icon icon="person"></b-icon>
             </template>
-            <b-dropdown-item href="#">My Profile</b-dropdown-item>
+            <b-dropdown-item href="/profile">My Profile</b-dropdown-item>
             <b-dropdown-item href="/logout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>

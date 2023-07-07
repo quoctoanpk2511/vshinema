@@ -3,8 +3,8 @@
     <Navbar />
     <div class="default-container">
       <slot />
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -19,7 +19,4 @@ export default {
 </script>
 
 <style scoped>
-.default-container {
-  height: calc(100vh - 56px - 400px);
-}
 </style>
