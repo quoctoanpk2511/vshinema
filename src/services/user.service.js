@@ -6,12 +6,19 @@ export const userService = {
 
 async function getRequestToken() {
   var result;
-  await axios.get(`${process.env.VUE_APP_API_URL}/authentication/token/new?api_key=${process.env.VUE_APP_API_KEY}`)
+  const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/token/new`
+  const options = {
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
+    }
+  }
+  await axios.get(url, options)
     .then(response => {
       result = response.data;
     })
     .catch(error => {
-      result = { success: false, errorMessage: "Cant get request token" }
+      result = { success: false, errorMessage: "Cannot get request token" }
       console.log("Error: " + error);
     });
   return result;
@@ -19,7 +26,14 @@ async function getRequestToken() {
 
 async function checkValidUser(param) {
   var result;
-  await axios.post(`${process.env.VUE_APP_API_URL}/authentication/token/validate_with_login?api_key=${process.env.VUE_APP_API_KEY}`, param)
+  const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/token/validate_with_login`
+  const options = {
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
+    }
+  }
+  await axios.post(url, param, options)
     .then(response => {
       result = response.data;
     })
@@ -32,7 +46,17 @@ async function checkValidUser(param) {
 
 async function getUserSession(reqToken) {
   var result;
-  await axios.post(`${process.env.VUE_APP_API_URL}/authentication/session/new?api_key=${process.env.VUE_APP_API_KEY}`, { request_token: reqToken.request_token })
+  const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/session/new`
+  const params = {
+    request_token: reqToken.request_token
+  }
+  const options = {
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
+    }
+  }
+  await axios.post(url, params, options)
     .then(response => {
       result = response.data;
     })

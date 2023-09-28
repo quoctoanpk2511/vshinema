@@ -36,7 +36,7 @@
 import { userService } from "../services";
 
 export default {
-  name: "Home",
+  name: "LoginForm",
   data() {
     return {
       username: "",
