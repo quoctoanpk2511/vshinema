@@ -9,6 +9,13 @@
   align-items: center;
 }
 
-.page-content {
-  min-height: calc(100vh - 72px - 66px);
+.page_content {
+  min-height: calc(100vh - 88px - 66px);
+  background-color: #141414;
+}
+
+/* Text */
+.list-item_title {
+  font-size: 28px;
+  color: #FFFFFF;
 }

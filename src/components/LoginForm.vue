@@ -50,13 +50,13 @@ export default {
     handleSubmit() {
       userService
         .login(this.username, this.password)
-        .then((result) => {
-          console.log('result: ', result);
-          if (result.success) {
+        .then((response) => {
+          console.log('response: ', response);
+          if (response.success) {
             this.$router.push("/");
           } else {
             this.isInvalidUser = true;
-            this.errorMessage = result.errorMessage;
+            this.errorMessage = response.errorMessage;
           }
         })
         .catch((error) => {

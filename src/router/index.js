@@ -55,7 +55,6 @@ router.beforeEach((to, from, next) => {
   if (to.path == "/register") {
     next();
   }else if ((!localStorage.getItem("expires_at") || Date.now() > Date.parse(localStorage.getItem("expires_at"))) && to.path !== "/login" || to.path == "/logout") {
-    console.log('abccc');
     localStorage.removeItem("request_token");
     localStorage.removeItem("expires_at");
     localStorage.removeItem("session_id");

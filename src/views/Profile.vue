@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content profile-page">
+    <div class="page_content profile-page">
       <div class="profile-section">
         <div>
             <h1>Profile</h1>

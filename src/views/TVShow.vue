@@ -1,41 +1,54 @@
 <template>
-  <div class="page-content tvshow-page">
-    <div class="content">
-      <list-item :listItem="listItem" />
-    </div>
+  <div class="page_content tvshow-page">
+    <banner></banner>
+    <b-container class="pb-4">
+      <list-item :groupedMovies="groupedMovies"></list-item>
+      <list-item :groupedMovies="groupedMovies"></list-item>
+    </b-container>
   </div>
 </template>
   
 <script>
 import LayoutDefault from "../layouts/LayoutDefault.vue";
-import ListItem from "@/components/ListItem.vue";
 import { tvService } from '@/services/tv.service';
+import Banner from '../components/Banner.vue';
+import ListItem from '@/components/ListItem.vue';
 
 export default {
+  components: { Banner, ListItem },
   name: "TVShow",
   data() {
-    var listItem = [];
-    return {listItem: listItem}
+    return {
+      movies: [],
+      groupedMovies: [],
+    }
   },
   async created() {
     this.$emit("update:layout", LayoutDefault);
     tvService
       .getTVShowList()
-      .then((result) => {
-        if (result.success) {
-          this.listItem = result.data.results;
-        } else {
-          console.log('11111: ', result);
+      .then((response) => {
+        if (response.success) {
+          this.movies = response.data.results
+          this.groupedMovies = this.chunkData(this.movies, 6);
         }
+        console.log(this.groupedMovies)
       })
       .catch((error) => {
         console.log("Error: " + error);
       });
   },
-  components: { ListItem },
-};
+  methods: {
+    chunkData(arr, size) {
+      const chunkedArray = [];
+      for (let i = 0; i < arr.length; i += size) {
+        chunkedArray.push(arr.slice(i, i + size));
+      }
+      return chunkedArray;
+    },
+  },
+}
 </script>
-  
-<style scoped>
 
+<style scoped>
 </style>

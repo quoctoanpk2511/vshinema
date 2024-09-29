@@ -5,9 +5,9 @@ export const tvService = {
 };
 
 async function getTVShowList() {
-  var result;
-  const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/tv/changes?page=1`
-  const options = {
+  let result;
+  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/discover/tv?page=1`
+  let options = {
     headers: {
       accept: 'application/json',
       Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
