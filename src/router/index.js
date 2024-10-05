@@ -39,9 +39,9 @@ const routes = [
     component: () => import("../views/Profile.vue"),
   },
   {
-    path: "/tvshow",
-    name: "tvshow",
-    component: () => import("../views/TVShow.vue"),
+    path: "/tvseries",
+    name: "tvseries",
+    component: () => import("../views/TVSeries.vue"),
   },
 ];
 

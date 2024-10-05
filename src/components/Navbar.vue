@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="bg-dark nav-bar" toggleable="lg" type="dark" variant="dark">
+  <b-navbar class="bg-dark nav-bar" toggleable="lg" type="dark" variant="dark" sticky>
     <b-navbar-brand class="pl-4" href="/">
       <img class="nav-logo" src="../statics/images/shinema-logo.png" />
     </b-navbar-brand>
@@ -7,7 +7,7 @@
     <b-collapse id="navbar-toggle-collapse" is-nav>
       <b-navbar-nav>
         <router-link to="/" class="nav-link" exact-active-class="active">Home</router-link>
-        <router-link to="/tvshow" class="nav-link" exact-active-class="active">TV Shows</router-link>
+        <router-link to="/tvseries" class="nav-link" exact-active-class="active">TV Series</router-link>
         <router-link to="/about" class="nav-link" exact-active-class="active">Movies</router-link>
         <router-link to="/new-popular" class="nav-link" exact-active-class="active">New & Popular</router-link>
         <router-link to="/my-list" class="nav-link" exact-active-class="active">My List</router-link>
