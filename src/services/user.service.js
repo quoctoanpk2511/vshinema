@@ -4,6 +4,7 @@ export const userService = {
   login,
 };
 
+// Get user request token
 async function getRequestToken() {
   var result;
   const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/token/new`
@@ -24,6 +25,7 @@ async function getRequestToken() {
   return result;
 }
 
+// Check valid login user
 async function checkValidUser(param) {
   var result;
   const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/token/validate_with_login`
@@ -44,6 +46,7 @@ async function checkValidUser(param) {
   return result;
 }
 
+// Get user session
 async function getUserSession(reqToken) {
   var result;
   const url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/authentication/session/new`
@@ -67,6 +70,7 @@ async function getUserSession(reqToken) {
   return result;
 }
 
+// Login function
 async function login(username, password) {
   try {
     var reqToken = await getRequestToken();

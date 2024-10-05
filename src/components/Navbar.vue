@@ -8,7 +8,7 @@
       <b-navbar-nav>
         <router-link to="/" class="nav-link" exact-active-class="active">Home</router-link>
         <router-link to="/tvseries" class="nav-link" exact-active-class="active">TV Series</router-link>
-        <router-link to="/about" class="nav-link" exact-active-class="active">Movies</router-link>
+        <router-link to="/movies" class="nav-link" exact-active-class="active">Movies</router-link>
         <router-link to="/new-popular" class="nav-link" exact-active-class="active">New & Popular</router-link>
         <router-link to="/my-list" class="nav-link" exact-active-class="active">My List</router-link>
       </b-navbar-nav>

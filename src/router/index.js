@@ -43,6 +43,11 @@ const routes = [
     name: "tvseries",
     component: () => import("../views/TVSeries.vue"),
   },
+  {
+    path: "/movies",
+    name: "movies",
+    component: () => import("../views/Movies.vue"),
+  },
 ];
 
 const router = new VueRouter({
