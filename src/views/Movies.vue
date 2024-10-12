@@ -1,11 +1,11 @@
 <template>
   <div class="page_content movies-page">
     <banner></banner>
-    <b-container class="pb-4">
-      <list-item-carousel :carouselMovies="movieTrendDay" title="Today Trending"></list-item-carousel>
+    <b-container class="pb-4 pt-3">
       <list-item-carousel :carouselMovies="movieNowPlaying" title="Upcoming"></list-item-carousel>
       <list-item-carousel :carouselMovies="moviePopular" title="What's Popular"></list-item-carousel>
       <list-item-carousel :carouselMovies="movieTopRated" title="Top Rated"></list-item-carousel>
+      <list-item-carousel :carouselMovies="movieUpComing" title="Up Coming"></list-item-carousel>
     </b-container>
   </div>
 </template>
@@ -21,25 +21,16 @@ export default {
   name: "Movies",
   data() {
     return {
-      movieTrendDay: [],
       movieNowPlaying: [],
       moviePopular: [],
       movieTopRated: [],
+      movieUpComing: [],
       errorMessage: "",
     }
   },
   async created() {
     this.$emit("update:layout", LayoutDefault);
     try {
-      movieService
-        .getMovieTrendDay()
-        .then((response) => {
-          if (response.success) {
-            this.movieTrendDay = utils.chunkData(response.data.results, 18, 6);
-          } else {
-            throw Exception(response.errorMessage);
-          }
-        });
       movieService
         .getMovieNowPlaying()
         .then((response) => {
@@ -63,6 +54,15 @@ export default {
         .then((response) => {
           if (response.success) {
             this.movieTopRated = utils.chunkData(response.data.results, 18, 6);
+          } else {
+            throw Exception(response.errorMessage);
+          }
+        });
+      movieService
+        .getMovieUpComing()
+        .then((response) => {
+          if (response.success) {
+            this.movieUpComing = utils.chunkData(response.data.results, 18, 6);
           } else {
             throw Exception(response.errorMessage);
           }

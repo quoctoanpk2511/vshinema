@@ -51,7 +51,6 @@ export default {
       userService
         .login(this.username, this.password)
         .then((response) => {
-          console.log('response: ', response);
           if (response.success) {
             this.$router.push("/");
           } else {

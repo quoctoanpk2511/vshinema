@@ -2,13 +2,13 @@ import axios from "axios";
 
 export const movieService = {
   // TV
-  getTVTrendDay,
+  getTVTrend,
   getTVAiringToday,
   getTVOnTheAir,
   getTVPopular,
   getTVTopRated,
   // Movie
-  getMovieTrendDay,
+  getMovieTrend,
   getMovieNowPlaying,
   getMoviePopular,
   getMovieTopRated,
@@ -17,9 +17,9 @@ export const movieService = {
 
 // TV Series
 // Get the trending TV series
-async function getTVTrendDay() {
+async function getTVTrend(periodTime) {
   let result;
-  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/trending/tv/day`;
+  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/trending/tv/${periodTime}`;
   let options = {
     headers: {
       accept: 'application/json',
@@ -118,9 +118,9 @@ async function getTVTopRated() {
 
 // Movies
 // Get the trending movies
-async function getMovieTrendDay() {
+async function getMovieTrend(periodTime) {
   let result;
-  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/trending/movie/day`;
+  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/trending/movie/${periodTime}`;
   let options = {
     headers: {
       accept: 'application/json',

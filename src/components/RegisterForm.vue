@@ -34,10 +34,9 @@ export default {
   },
   methods: {
     register() {
-      console.log("register");
+      console.log("You are already registered");
     },
     validEmail(email) {
-      console.log(email);
       if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
         this.isInvalidEmail = true;
       } else {

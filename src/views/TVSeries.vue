@@ -1,11 +1,11 @@
 <template>
   <div class="page_content tvseries-page">
     <banner></banner>
-    <b-container class="pb-4">
-      <list-item-carousel :carouselMovies="tvTrendDay" title="Today Trending"></list-item-carousel>
-      <!-- <list-item-carousel :carouselMovies="tvOnTheAir" title="On The Air"></list-item-carousel> -->
+    <b-container class="pb-4 pt-3">
+      <list-item-carousel :carouselMovies="tvAiringToday" title="Airing Today"></list-item-carousel>
       <list-item-carousel :carouselMovies="tvPopular" title="What's Popular"></list-item-carousel>
       <list-item-carousel :carouselMovies="tvTopRated" title="Top Rated"></list-item-carousel>
+      <list-item-carousel :carouselMovies="tvOnTheAir" title="On The Air"></list-item-carousel>
     </b-container>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   name: "TVSeries",
   data() {
     return {
-      tvTrendDay: [],
+      tvAiringToday: [],
       tvOnTheAir: [],
       tvPopular: [],
       tvTopRated: [],
@@ -32,10 +32,10 @@ export default {
     this.$emit("update:layout", LayoutDefault);
     try {
       movieService
-        .getTVTrendDay()
+        .getTVAiringToday()
         .then((response) => {
           if (response.success) {
-            this.tvTrendDay = utils.chunkData(response.data.results, 18, 6);
+            this.tvAiringToday = utils.chunkData(response.data.results, 18, 6);
           } else {
             throw Exception(response.errorMessage);
           }

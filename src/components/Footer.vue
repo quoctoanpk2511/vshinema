@@ -2,7 +2,7 @@
   <footer class="text-white text-center">
     <b-container>
       <div class="social-container py-2">
-        <a class="social-icon" href="https://www.fb.com/quoctoanpk2511">
+        <a class="social-icon" href="https://www.fb.com/quoctoanpk2511" target="blank">
           <b-icon icon="facebook" font-scale="2"></b-icon>
         </a>
         <a class="social-icon">

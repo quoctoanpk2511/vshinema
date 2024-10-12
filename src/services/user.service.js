@@ -95,6 +95,6 @@ async function login(username, password) {
     localStorage.setItem('session_id', userSection.session_id);
     return { success: true, section_id: userSection.session_id };
   } catch {
-    console.log('Error: Login error.');
+    console.log("Error: " + error);
   }
 }
