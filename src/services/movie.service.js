@@ -13,9 +13,12 @@ export const movieService = {
   getMoviePopular,
   getMovieTopRated,
   getMovieUpComing,
+  //Search
+  searchTVByKeyword,
+  searchMovieByKeyword,
 };
 
-// TV Series
+// TV Series API
 // Get the trending TV series
 async function getTVTrend(periodTime) {
   let result;
@@ -116,7 +119,7 @@ async function getTVTopRated() {
   return result;
 }
 
-// Movies
+// Movies API
 // Get the trending movies
 async function getMovieTrend(periodTime) {
   let result;
@@ -201,6 +204,47 @@ async function getMovieTopRated() {
 async function getMovieUpComing() {
   let result;
   let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/movie/upcoming`;
+  let options = {
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
+    }
+  }
+  await axios.get(url, options)
+    .then(response => {
+      result = { success: true, data: response.data };
+    })
+    .catch(err => {
+      result = { success: false, message: err }
+    });
+  return result;
+}
+
+// Search API
+// Search movies
+async function searchTVByKeyword(keyword) {
+  let result;
+  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/search/tv?query=${keyword}`;
+  let options = {
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}`
+    }
+  }
+  await axios.get(url, options)
+    .then(response => {
+      result = { success: true, data: response.data };
+    })
+    .catch(err => {
+      result = { success: false, message: err }
+    });
+  return result;
+}
+
+// Search movies
+async function searchMovieByKeyword(keyword) {
+  let result;
+  let url = `${process.env.VUE_APP_API_URL}/${process.env.VUE_APP_API_VERSION}/search/movie?query=${keyword}`;
   let options = {
     headers: {
       accept: 'application/json',

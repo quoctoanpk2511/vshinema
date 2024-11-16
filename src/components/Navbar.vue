@@ -13,12 +13,6 @@
         <router-link to="/my-list" class="nav-link" exact-active-class="active">My List</router-link>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-form>
-          <b-form-input type="search" placeholder="Search" aria-label="Search" />
-          <b-button type="submit" variant="link">
-            <b-icon icon="search" variant="white"></b-icon>
-          </b-button>
-        </b-nav-form>
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template #button-content>
@@ -49,6 +43,7 @@ export default {
   data() {
     return {
       isLoggedIn: true,
+      keyword: null,
     }
   },
 };

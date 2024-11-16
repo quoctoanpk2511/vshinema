@@ -15,5 +15,22 @@
 }
 
 /* Text */
+.fs-5 {
+  font-size: 28px;
+  color: #FFFFFF;
+}
+
+.fs-4 {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+.fs-3 {
+  font-size: 20px;
+  color: #FFFFFF;
+}
 
 /* Navbar */
+
+/* Logo */
+/* Color #F76F73 */

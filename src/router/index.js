@@ -48,6 +48,11 @@ const routes = [
     name: "movies",
     component: () => import("../views/Movies.vue"),
   },
+  {
+    path: "/search",
+    name: "search",
+    component: () => import("../views/Search.vue"),
+  },
 ];
 
 const router = new VueRouter({
@@ -59,7 +64,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.path == "/register") {
     next();
-  }else if ((!localStorage.getItem("expires_at") || Date.now() > Date.parse(localStorage.getItem("expires_at"))) && to.path !== "/login" || to.path == "/logout") {
+  } else if ((!localStorage.getItem("expires_at") || Date.now() > Date.parse(localStorage.getItem("expires_at"))) && to.path !== "/login" || to.path == "/logout") {
     localStorage.removeItem("request_token");
     localStorage.removeItem("expires_at");
     localStorage.removeItem("session_id");

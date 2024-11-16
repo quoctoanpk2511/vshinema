@@ -2,19 +2,19 @@
   <b-row class="pt-4" v-if="carouselMovies">
     <b-col>
       <div class="d-flex">
-        <div class="list-item_title-text pl-3">{{ title }}</div>
+        <div class="fs-5 pl-3">{{ title }}</div>
         <b-form-group class="list-item_radio pl-3" v-if="options">
-          <b-form-radio-group v-model="selected" :options="options" button-variant="outline-secondary" size="sm"
-            buttons @change="onChangeRadio($event)"></b-form-radio-group>
+          <b-form-radio-group v-model="selected" :options="options" button-variant="outline-secondary" size="sm" buttons
+            @change="onChangeRadio($event)"></b-form-radio-group>
         </b-form-group>
       </div>
-      <b-carousel id="carousel-1" :interval="4000" controls>
+      <b-carousel id="carousel-1" :interval="interval ? interval : 0" controls>
         <b-carousel-slide v-for="group in carouselMovies" :key="group.id">
           <template v-slot:img>
             <b-row class="m-0">
               <b-col class="card-content_img" cols="12" md="2" v-for="item in group" :key="item.id">
-                <div>
-                  <b-card-img :src="imgUrl + item.poster_path" alt=" "></b-card-img>
+                <div class="bg-poster">
+                  <b-card-img :src="imgUrl + item.poster_path" :alt="item.name"></b-card-img>
                 </div>
               </b-col>
             </b-row>
@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "ListItemCarousel",
-  props: ['carouselMovies', 'title', 'options'],
+  props: ['carouselMovies', 'title', 'options', 'interval'],
   data() {
     return {
       selected: 'day',
@@ -71,13 +71,21 @@ export default {
   gap: 20px;
 }
 
-.list-item_title-text {
-  font-size: 28px;
-  color: #FFFFFF;
-}
-
 .list-item_radio {
   margin-bottom: 0px !important;
   align-self: center;
+}
+
+.bg-poster {
+  background-image: url(../statics/images/no-img.svg);
+  min-height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #dbdbdb;
+  background-size: 50%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
   <div class="page_content home-page">
     <banner></banner>
+    <search-bar></search-bar>
     <b-container class="pb-4 pt-3">
-      <list-item-carousel :carouselMovies="tvTrend" :options="options" @clicked-change-filter="clickedChangeFilter"
+      <list-item-carousel :carouselMovies="tvTrend" :options="options" :interval="4000" @clicked-change-filter="clickedChangeFilter"
         title="Trending TV Shows"></list-item-carousel>
-      <list-item-carousel :carouselMovies="movieTrend" :options="options" @clicked-change-filter="clickedChangeFilter"
+      <list-item-carousel :carouselMovies="movieTrend" :options="options" :interval="4000" @clicked-change-filter="clickedChangeFilter"
         title="Trending Movies"></list-item-carousel>
     </b-container>
   </div>
@@ -15,9 +16,10 @@ import LayoutDefault from "../layouts/LayoutDefault.vue";
 import Banner from "../components/Banner.vue";
 import ListItemCarousel from "../components/ListItemCarousel.vue";
 import { movieService, utils } from '@/services';
+import SearchBar from "@/components/SearchBar.vue";
 
 export default {
-  components: { Banner, ListItemCarousel },
+  components: { Banner, ListItemCarousel, SearchBar },
   name: "Home",
   data() {
     return {
